@@ -1,6 +1,7 @@
 package Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -25,12 +26,20 @@ public class Browser {
 
     public static void customizeBrowserWindow() {
         driver.manage().window().maximize();
-
     }
 
     public static void setUrl(String url) {
         driver.get(url);
     }
 
+    public static void clearCookiesAndLocalStorage() {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+            driver.manage().deleteAllCookies();
+            javascriptExecutor.executeScript("window.sessionStorage.clear()");
+    }
+
+    public static void closeBrowser() {
+        driver.quit();
+    }
 
 }
