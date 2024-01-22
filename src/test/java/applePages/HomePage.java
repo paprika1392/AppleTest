@@ -1,5 +1,6 @@
 package applePages;
 
+import Utils.Browser;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
@@ -11,10 +12,12 @@ public class HomePage extends BasePage {
 
 
     public void clickSearchButton() {
+        Browser.getWebdriverWait();
         driver.findElement(searchButton).click();
     }
 
     public void writeNameOfProduct(String productName) {
+        Browser.getWebdriverWait();
         driver.findElement(searchField).sendKeys(productName);
 
     }
