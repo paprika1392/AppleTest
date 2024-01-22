@@ -2,13 +2,14 @@ package Steps;
 
 import Utils.Browser;
 import applePages.HomePage;
-import org.testng.annotations.Test;
+import applePages.ProductPage;
 
 import static Utils.Constants.Constants.APPLE_HOME_PAGE_URL;
 
 public class Steps {
 
     public static HomePage homePage = new HomePage();
+    public static ProductPage productPage = new ProductPage();
 
     public static void openBrowser() {
         Browser.webDriverStartWork();
@@ -20,11 +21,16 @@ public class Steps {
         Browser.clearCookiesAndLocalStorage();
     }
 
-    public static void enterTheDeviseName(String productName) {
+    public static void enterProductName(String productName) {
         homePage.clickSearchButton();
         homePage.writeNameOfProduct(productName);
         homePage.clickSearchProduct();
 
+    }
+
+    public static void FindAndEqualsProducts(String product) {
+        productPage.findAvailableProducts();
+        productPage.equalsCurrentProducts(product);
     }
 
     public static void closeBrowser() {
