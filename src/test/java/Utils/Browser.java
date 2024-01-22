@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Browser {
 
@@ -40,6 +41,11 @@ public class Browser {
 
     public static void closeBrowser() {
         driver.quit();
+    }
+
+    public static WebDriverWait getWebdriverWait() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        return wait;
     }
 
 }
