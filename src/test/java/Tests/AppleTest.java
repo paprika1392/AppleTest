@@ -3,11 +3,13 @@ package Tests;
 import Steps.Steps;
 import org.testng.annotations.Test;
 
+import static Utils.Constants.Constants.APPLE_SEARCHING_PRODUCT_NAME;
+
 public class AppleTest extends BaseTest {
 
     @Test
     public void test() {
-        Steps.enterProductName("iPhone 15");
-        Steps.FindAndEqualsProducts("iPhone 15");
+        Steps.enterProductName(APPLE_SEARCHING_PRODUCT_NAME);
+        Steps.FindAndEqualsProducts(APPLE_SEARCHING_PRODUCT_NAME);
     }
 }
