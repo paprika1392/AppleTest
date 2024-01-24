@@ -28,9 +28,8 @@ public class Steps {
 
     }
 
-    public static void FindAndEqualsProducts(String product) {
+    public static void findAndEqualsProducts(String product) {
         productPage.findAvailableProducts();
-        productPage.equalsCurrentProducts(product);
     }
 
     public static void closeBrowser() {

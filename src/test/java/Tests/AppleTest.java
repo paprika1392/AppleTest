@@ -10,6 +10,6 @@ public class AppleTest extends BaseTest {
     @Test
     public void test() {
         Steps.enterProductName(APPLE_SEARCHING_PRODUCT_NAME);
-        Steps.FindAndEqualsProducts(APPLE_SEARCHING_PRODUCT_NAME);
+        Steps.findAndEqualsProducts(APPLE_SEARCHING_PRODUCT_NAME);
     }
 }
