@@ -29,6 +29,7 @@ public class Steps {
     }
 
     public static void findAndEqualsProducts(String product) {
+        productPage.waitUntilElemWillBeVisible();
         productPage.findAvailableProducts();
     }
 
