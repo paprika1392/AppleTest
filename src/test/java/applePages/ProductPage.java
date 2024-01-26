@@ -12,7 +12,7 @@ import static Utils.Constants.Constants.APPLE_SEARCHING_PRODUCT_NAME;
 
 public class ProductPage extends BasePage {
 
-    public final By currentProducts = By.cssSelector(".rf-serp-productname-link");
+    private final By currentProducts = By.cssSelector(".rf-serp-productname-link");
 
     public void waitUntilElemWillBeVisible() {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(currentProducts));
