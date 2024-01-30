@@ -2,15 +2,41 @@ package applePages;
 
 import Utils.Browser;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
+import static Utils.Constants.Constants.INCORRECT_ID_OR_NAME_ERROR;
 
 public class SignInPage extends BasePage {
 
     private final By accountNameField = By.xpath("//div[@class='account-name     ']");
+    private final By continueButton = By.xpath("//span[@class='text feat-split']");
+    private final By passwordNameField = By.xpath("//input[@type='password']");
+    private final By incorrectIdOrPasswordError = By.xpath("//p[@id='errMsg']");
 
     public void enterAccName() {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(accountNameField));
         driver.findElement(accountNameField).sendKeys("blablabla");
     }
+
+    public void clickContinueButton() {
+        driver.findElement(continueButton).click();
+    }
+
+    public void enterPassWordField() {
+        Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(passwordNameField));
+        driver.findElement(passwordNameField).sendKeys("12345");
+    }
+
+    public void checkingIdAndPasswordError() {
+        Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(incorrectIdOrPasswordError));
+        String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
+        Boolean result = actualTextOfError.contains(INCORRECT_ID_OR_NAME_ERROR);
+
+        Assert.assertTrue(result, "There is the same result with  " + actualTextOfError);
+
+
+    }
+
 }
