@@ -34,7 +34,7 @@ public class SignInPage extends BasePage {
         String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
         Boolean result = actualTextOfError.contains(INCORRECT_ID_OR_NAME_ERROR);
 
-        Assert.assertTrue(result, "There is the same result with  " + actualTextOfError);
+        Assert.assertTrue(result, "There is not the same result with  " + INCORRECT_ID_OR_NAME_ERROR);
 
 
     }
