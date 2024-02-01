@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-import static Utils.Constants.Constants.INCORRECT_ID_OR_NAME_ERROR;
+import static Utils.Constants.Constants.*;
 
 public class SignInPage extends BasePage {
 
@@ -18,7 +18,7 @@ public class SignInPage extends BasePage {
 
     public void enterAccName() {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(accountNameField));
-        driver.findElement(accountNameField).sendKeys("blablabla");
+        driver.findElement(accountNameField).sendKeys(INCORRECT_NAME);
     }
 
     public void clickContinueButton() {
@@ -27,7 +27,7 @@ public class SignInPage extends BasePage {
 
     public void enterPassWordField() {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(passwordNameField));
-        driver.findElement(passwordNameField).sendKeys("12345");
+        driver.findElement(passwordNameField).sendKeys(INCORRECT_ID);
     }
 
     public void checkingError() {
