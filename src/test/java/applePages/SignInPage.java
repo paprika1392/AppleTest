@@ -14,6 +14,7 @@ public class SignInPage extends BasePage {
     private final By continueButton = By.xpath("//span[@class='text feat-split']");
     private final By passwordNameField = By.xpath("//input[@type='password']");
     private final By incorrectIdOrPasswordError = By.xpath("//p[@id='errMsg']");
+    private final By spinnerContainer = By.xpath("//div[contains(@class, 'show ')]");
 
     public void enterAccName() {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(accountNameField));
@@ -29,14 +30,20 @@ public class SignInPage extends BasePage {
         driver.findElement(passwordNameField).sendKeys("12345");
     }
 
+    public void checkingError() {
+        Browser.getWebdriverWait().until(ExpectedConditions.invisibilityOfElementLocated(spinnerContainer));
+        WebElement element = driver.findElement(incorrectIdOrPasswordError);
+        Boolean result = element.isDisplayed();
+
+        Assert.assertTrue(result,  "Error's window isn't opened ");
+
+    }
     public void checkingIdAndPasswordError() {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(incorrectIdOrPasswordError));
         String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
         Boolean result = actualTextOfError.contains(INCORRECT_ID_OR_NAME_ERROR);
 
         Assert.assertTrue(result, "There is not the same result with  " + INCORRECT_ID_OR_NAME_ERROR);
-
-
     }
 
 }
