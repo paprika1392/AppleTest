@@ -1,7 +1,9 @@
 package applePages;
 
 import Utils.Browser;
+import Utils.MyException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,11 +39,16 @@ public class SignInPage extends BasePage {
     }
 
     public void checkingError() {
-        Browser.getWebdriverWait().until(ExpectedConditions.invisibilityOfElementLocated(spinnerContainer));
-        WebElement element = driver.findElement(incorrectIdOrPasswordError);
-        Boolean result = element.isDisplayed();
+            Browser.getWebdriverWait().until(ExpectedConditions.invisibilityOfElementLocated(spinnerContainer));
+        try {
+            WebElement element = driver.findElement(incorrectIdOrPasswordError);
+            Boolean result = element.isDisplayed();
 
-        Assert.assertTrue(result,  "Error's window isn't opened ");
+            Assert.assertTrue(result,  "Error's window isn't opened ");
+
+        } catch (NoSuchElementException e) {
+            throw new MyException("no error message appeared");
+        }
 
     }
     public void checkingIdAndPasswordError() {
