@@ -20,12 +20,12 @@ public class SignInPage extends BasePage {
     private final By incorrectIdOrPasswordError = By.xpath("//p[@id='errMsg']");
     private final By spinnerContainer = By.xpath("//div[contains(@class, 'show ')]");
 
-    public void enterAccName() {
+    public void enterAccName(String accName) {
         WebElement element = driver.findElement(iFrame);
       driver.switchTo().frame(element);
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(accountNameField));
         driver.findElement(accountNameField).click();
-        driver.findElement(accountNameField).sendKeys(INCORRECT_NAME);
+        driver.findElement(accountNameField).sendKeys(accName);
     }
 
     public void clickContinueButton() {
@@ -33,9 +33,9 @@ public class SignInPage extends BasePage {
         driver.findElement(continueButton).click();
     }
 
-    public void enterPassWordField() {
+    public void enterPassWordField(String incorrectPassword) {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(passwordNameField));
-        driver.findElement(passwordNameField).sendKeys(INCORRECT_ID);
+        driver.findElement(passwordNameField).sendKeys(incorrectPassword);
     }
 
     public void checkingError() {
@@ -51,10 +51,10 @@ public class SignInPage extends BasePage {
         }
 
     }
-    public void checkingIdAndPasswordError() {
+    public void checkingIdAndPasswordError(String textOfCurrentError) {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(incorrectIdOrPasswordError));
         String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
-        Boolean result = actualTextOfError.contains(INCORRECT_ID_OR_NAME_ERROR);
+        Boolean result = actualTextOfError.contains(textOfCurrentError);
 
         Assert.assertTrue(result, String.format("Text of error is incorrect: '%s'", actualTextOfError));
     }

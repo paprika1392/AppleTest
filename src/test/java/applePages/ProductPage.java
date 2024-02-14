@@ -19,12 +19,12 @@ public class ProductPage extends BasePage {
 
     }
 
-    public void findAvailableProducts() {
+    public void findAvailableProducts(String productName) {
         List<WebElement> elements = driver.findElements(currentProducts);
 
         for (WebElement element : elements) {
             String actualText = element.getText();
-            boolean actualResult = actualText.contains(APPLE_SEARCHING_PRODUCT_NAME);
+            boolean actualResult = actualText.contains(productName);
 
             Assert.assertTrue(actualResult, "There is NOT the same with searching product - " + APPLE_SEARCHING_PRODUCT_NAME);
 

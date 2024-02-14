@@ -38,9 +38,9 @@ public class Steps {
 
     }
 
-    public static void findAndEqualsProducts(String product) {
+    public static void findAndEqualsProducts(String productName) {
         productPage.waitUntilElemWillBeVisible();
-        productPage.findAvailableProducts();
+        productPage.findAvailableProducts(productName);
     }
 
 
@@ -51,16 +51,16 @@ public class Steps {
         homePage.clickSignInButton();
     }
 
-    public static void enterPersonalData() {
-        signInPage.enterAccName();
+    public static void enterPersonalData(String incorrectAccName, String incorrectPassword) {
+        signInPage.enterAccName(incorrectAccName);
         signInPage.clickContinueButton();
-        signInPage.enterPassWordField();
+        signInPage.enterPassWordField(incorrectPassword);
         signInPage.clickContinueButton();
     }
 
-    public static void checkingErrors() {
+    public static void checkingErrors(String textOfCurrentError) {
         signInPage.checkingError();
-        signInPage.checkingIdAndPasswordError();
+        signInPage.checkingIdAndPasswordError(textOfCurrentError);
     }
 
 }

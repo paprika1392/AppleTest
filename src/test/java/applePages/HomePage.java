@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static Utils.Constants.Constants.APPLE_SEARCHING_PRODUCT_NAME;
+
 public class HomePage extends BasePage {
 
     private final By searchButton = By.xpath("//li[@data-topnav-flyout-label='Search apple.com']");
