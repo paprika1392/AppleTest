@@ -4,12 +4,9 @@ import Utils.Browser;
 import Utils.MyException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-
-import static Utils.Constants.Constants.*;
 
 public class SignInPage extends BasePage {
 
@@ -38,7 +35,7 @@ public class SignInPage extends BasePage {
         driver.findElement(passwordNameField).sendKeys(incorrectPassword);
     }
 
-    public void checkingError() {
+    public void checkForErrorWindowToAppear() {
             Browser.getWebdriverWait().until(ExpectedConditions.invisibilityOfElementLocated(spinnerContainer));
         try {
             WebElement element = driver.findElement(incorrectIdOrPasswordError);
@@ -51,7 +48,7 @@ public class SignInPage extends BasePage {
         }
 
     }
-    public void checkingIdAndPasswordError(String textOfCurrentError) {
+    public void checkLoginErrorText(String textOfCurrentError) {
         Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(incorrectIdOrPasswordError));
         String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
         Boolean result = actualTextOfError.contains(textOfCurrentError);

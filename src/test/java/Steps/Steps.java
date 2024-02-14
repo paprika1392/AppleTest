@@ -59,8 +59,8 @@ public class Steps {
     }
 
     public static void checkingErrors(String textOfCurrentError) {
-        signInPage.checkingError();
-        signInPage.checkingIdAndPasswordError(textOfCurrentError);
+        signInPage.checkForErrorWindowToAppear();
+        signInPage.checkLoginErrorText(textOfCurrentError);
     }
 
 }
