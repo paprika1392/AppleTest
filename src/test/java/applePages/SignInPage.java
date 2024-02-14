@@ -36,10 +36,10 @@ public class SignInPage extends BasePage {
     }
 
     public void checkForErrorWindowToAppear() {
-        Browser.waitUntilElementIsVisible(spinnerContainer));
+        Browser.waitUntilElementIsVisible(spinnerContainer);
         try {
             WebElement element = driver.findElement(incorrectIdOrPasswordError);
-            Boolean result = element.isDisplayed();
+            boolean result = element.isDisplayed();
 
             Assert.assertTrue(result, "Error's window isn't opened ");
 
@@ -52,7 +52,7 @@ public class SignInPage extends BasePage {
     public void checkLoginErrorText(String textOfCurrentError) {
         Browser.waitUntilElementIsVisible(incorrectIdOrPasswordError);
         String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
-        Boolean result = actualTextOfError.contains(textOfCurrentError);
+        boolean result = actualTextOfError.contains(textOfCurrentError);
 
         Assert.assertTrue(result, String.format("Text of error is incorrect: '%s'", actualTextOfError));
     }
