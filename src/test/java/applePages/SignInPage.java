@@ -15,14 +15,14 @@ public class SignInPage extends BasePage {
     private final By continueButton = By.xpath("//button[@id='sign-in']");
     private final By passwordNameField = By.xpath("//input[@type='password']");
     private final By incorrectIdOrPasswordError = By.xpath("//p[@id='errMsg']");
-    private final By spinnerContainer = By.xpath("//div[contains(@class, 'show ')]");
+    private final By spinnerContainer = By.xpath("//div[contains(@class, 'show')]");
 
-    public void enterAccName(String accName) {
+    public void enterAccountName(String accountName) {
         WebElement element = driver.findElement(iFrame);
-      driver.switchTo().frame(element);
-        Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(accountNameField));
+        driver.switchTo().frame(element);
+        Browser.waitUntilElementIsVisible(accountNameField);;
         driver.findElement(accountNameField).click();
-        driver.findElement(accountNameField).sendKeys(accName);
+        driver.findElement(accountNameField).sendKeys(accountName);
     }
 
     public void clickContinueButton() {
@@ -30,26 +30,27 @@ public class SignInPage extends BasePage {
         driver.findElement(continueButton).click();
     }
 
-    public void enterPassWordField(String incorrectPassword) {
-        Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(passwordNameField));
+    public void enterPasswordField(String incorrectPassword) {
+        Browser.waitUntilElementIsVisible(passwordNameField);
         driver.findElement(passwordNameField).sendKeys(incorrectPassword);
     }
 
     public void checkForErrorWindowToAppear() {
-            Browser.getWebdriverWait().until(ExpectedConditions.invisibilityOfElementLocated(spinnerContainer));
+        Browser.waitUntilElementIsVisible(spinnerContainer));
         try {
             WebElement element = driver.findElement(incorrectIdOrPasswordError);
             Boolean result = element.isDisplayed();
 
-            Assert.assertTrue(result,  "Error's window isn't opened ");
+            Assert.assertTrue(result, "Error's window isn't opened ");
 
         } catch (NoSuchElementException e) {
             throw new MyException("no error message appeared");
         }
 
     }
+
     public void checkLoginErrorText(String textOfCurrentError) {
-        Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(incorrectIdOrPasswordError));
+        Browser.waitUntilElementIsVisible(incorrectIdOrPasswordError);
         String actualTextOfError = driver.findElement(incorrectIdOrPasswordError).getText();
         Boolean result = actualTextOfError.contains(textOfCurrentError);
 

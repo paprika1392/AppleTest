@@ -15,7 +15,7 @@ public class ProductPage extends BasePage {
     private final By currentProducts = By.cssSelector(".rf-serp-productname-link");
 
     public void waitUntilElemWillBeVisible() {
-        Browser.getWebdriverWait().until(ExpectedConditions.visibilityOfElementLocated(currentProducts));
+        Browser.waitUntilElementIsVisible(currentProducts);
 
     }
 

@@ -31,14 +31,14 @@ public class Steps {
 
     //       """ Steps for AppleTest """
 
-    public static void enterProductName(String productName) {
+    public static void enterProductNameAndSearch(String productName) {
         homePage.clickSearchButton();
         homePage.writeNameOfProduct(productName);
         homePage.clickSearchProduct();
 
     }
 
-    public static void findAndEqualsProducts(String productName) {
+    public static void findAvailableProducts(String productName) {
         productPage.waitUntilElemWillBeVisible();
         productPage.findAvailableProducts(productName);
     }
@@ -51,10 +51,10 @@ public class Steps {
         homePage.clickSignInButton();
     }
 
-    public static void enterPersonalData(String incorrectAccName, String incorrectPassword) {
-        signInPage.enterAccName(incorrectAccName);
+    public static void enterPersonalData(String incorrectAccountName, String incorrectPassword) {
+        signInPage.enterAccountName(incorrectAccountName);
         signInPage.clickContinueButton();
-        signInPage.enterPassWordField(incorrectPassword);
+        signInPage.enterPasswordField(incorrectPassword);
         signInPage.clickContinueButton();
     }
 
