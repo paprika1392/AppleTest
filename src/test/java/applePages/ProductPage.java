@@ -3,7 +3,6 @@ package applePages;
 import Utils.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.util.List;
@@ -28,12 +27,6 @@ public class ProductPage extends BasePage {
 
             Assert.assertTrue(actualResult, "There is NOT the same with searching product - " + APPLE_SEARCHING_PRODUCT_NAME);
 
-
-//            if (actualText.contains(APPLE_SEARCHING_PRODUCT_NAME)) {
-//                System.out.println("Result contain content : " + actualText);
-//            } else {
-//                System.out.println("Results not contain content");
-//            }
         }
 
     }

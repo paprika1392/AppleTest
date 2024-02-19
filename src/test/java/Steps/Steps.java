@@ -51,15 +51,15 @@ public class Steps {
         homePage.clickSignInButton();
     }
 
-    public static void enterPersonalData(String incorrectAccountName, String incorrectPassword) {
-        signInPage.enterAccountName(incorrectAccountName);
+    public static void enterPersonalData(String accountName, String password) {
+        signInPage.enterAccountName(accountName);
         signInPage.clickContinueButton();
-        signInPage.enterPasswordField(incorrectPassword);
+        signInPage.enterPasswordField(password);
         signInPage.clickContinueButton();
     }
 
     public static void checkingErrors(String textOfCurrentError) {
-        signInPage.checkForErrorWindowToAppear();
+        signInPage.checkIfErrorWindowAppears();
         signInPage.checkLoginErrorText(textOfCurrentError);
     }
 

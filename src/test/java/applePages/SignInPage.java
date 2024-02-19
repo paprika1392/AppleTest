@@ -30,12 +30,12 @@ public class SignInPage extends BasePage {
         driver.findElement(continueButton).click();
     }
 
-    public void enterPasswordField(String incorrectPassword) {
+    public void enterPasswordField(String password) {
         Browser.waitUntilElementIsVisible(passwordNameField);
-        driver.findElement(passwordNameField).sendKeys(incorrectPassword);
+        driver.findElement(passwordNameField).sendKeys(password);
     }
 
-    public void checkForErrorWindowToAppear() {
+    public void checkIfErrorWindowAppears() {
         Browser.waitUntilElementIsVisible(spinnerContainer);
         try {
             WebElement element = driver.findElement(incorrectIdOrPasswordError);
