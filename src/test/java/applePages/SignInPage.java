@@ -20,7 +20,7 @@ public class SignInPage extends BasePage {
     public void enterAccountName(String accountName) {
         WebElement element = driver.findElement(iFrame);
         driver.switchTo().frame(element);
-        Browser.waitUntilElementIsVisible(accountNameField);;
+        Browser.waitUntilElementIsVisible(accountNameField);
         driver.findElement(accountNameField).click();
         driver.findElement(accountNameField).sendKeys(accountName);
     }
